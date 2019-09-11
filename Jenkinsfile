@@ -1,12 +1,27 @@
-pipeline{
-  
-  stages {
-      stage('Preparation') {
-        echo 'Preparation'
+pipeline {
+    agent any
+    stages {
+        stage('one') {
+            steps {
+                parallel("first": {
+                    echo "hello"
+                },
+                        "second": {
+                            echo "world"
+                        }
+                )
+            }
         }
-   
-      stage('Build') {
-        echo 'Build'
+        stage('two') {
+            steps {
+                parallel("first": {
+                    echo "hello"
+                },
+                        "second": {
+                            echo "world"
+                        }
+                )
+            }
         }
-     }
+    }
 }
